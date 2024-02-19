@@ -11,3 +11,7 @@
         GitHub</a>.
     </h3>
 </template>
+
+<script lang="ts" setup>
+    defineProps(['mode']);
+</script>
