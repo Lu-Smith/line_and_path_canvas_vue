@@ -1,4 +1,4 @@
-export class LineOne {
+export default class LineOne {
     startX: number;
     startY: number;
     endX: number;
