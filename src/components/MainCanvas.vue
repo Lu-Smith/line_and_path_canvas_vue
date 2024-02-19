@@ -18,7 +18,7 @@
         if (canvas.value) {
         const ctx = canvas.value.getContext('2d');
         canvas.value.width = window.innerWidth;
-        canvas.value.height = window.innerHeight*0.79;
+        canvas.value.height = window.innerHeight*0.786;
         console.log(ctx);
     }
     });
