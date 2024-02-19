@@ -4,7 +4,8 @@ export default class LineOne {
     endX: number;
     endY: number;
     lineWidth: number;
-    canvas: HTMLCanvasElement
+    canvas: HTMLCanvasElement;
+    hue: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -13,9 +14,10 @@ export default class LineOne {
         this.endX = Math.random() * this.canvas.width;
         this.endY = Math.random() * this.canvas.height;
         this.lineWidth = Math.floor(Math.random() * 15 + 1);
+        this.hue = Math.floor(Math.random() * 360);
     }
     draw(ctx: CanvasRenderingContext2D ) {
-        ctx.strokeStyle = 'red';
+        ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.startX, this.startY);
