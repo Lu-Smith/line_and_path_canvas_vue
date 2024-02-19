@@ -15,3 +15,11 @@
         window.addEventListener("mousedown", handleMouseDown);
     });
 </script>
+
+<style scoped>
+    .canvas{
+        border: 10px solid red;
+        width: 100%;
+        height: 100%;
+    }
+</style>
