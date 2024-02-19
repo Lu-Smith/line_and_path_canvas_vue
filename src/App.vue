@@ -5,14 +5,25 @@ import Header from './components/Header.vue';
 </script>
 
 <template>
-  <div>
-    <Header />
-    <MainCanvas />
-    <Footer />
+  <div class="appContainer">
+    <div>   
+      <Header />
+    </div>
+    <div>
+      <MainCanvas />
+    </div>
+    <div>
+      <Footer />
+    </div>
   </div>
    
 </template>
 
 <style scoped>
-
+.appContainer {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+}
 </style>
