@@ -18,15 +18,15 @@
         if (canvas.value) {
         const ctx = canvas.value.getContext('2d');
         canvas.value.width = window.innerWidth;
-        canvas.value.height = window.innerHeight*0.8;
+        canvas.value.height = window.innerHeight*0.79;
         console.log(ctx);
     }
     });
 </script>
 
 <style scoped>
-    .canvas{
-        border: 10px solid red;
+    canvas {
+        border: 5px solid red;
         background-color: antiquewhite;
     }
 </style>
