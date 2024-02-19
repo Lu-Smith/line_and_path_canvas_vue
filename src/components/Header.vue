@@ -1,6 +1,6 @@
 <template>
     <div @click="changeMode">
-        <div v-if="mode === 'light'">
+        <div v-if="mode === 'light'" class="header">
             <span  class="material-symbols-outlined switch">
             toggle_off
             </span>
@@ -8,7 +8,7 @@
             emoji_objects
             </span>
         </div>
-        <div v-if="mode === 'dark'">
+        <div v-if="mode === 'dark'" class="header">
             <span  class="material-symbols-outlined switch">
             toggle_on
             </span>
@@ -33,3 +33,14 @@ const changeMode = () => {
 }
 </script>
 
+<style scoped>
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+    .switch {
+        font-size: 2.2rem;
+    }
+</style>
