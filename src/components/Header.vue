@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @click="changeMode">
         {{ mode }}
     </div>
 </template>
@@ -8,4 +8,12 @@
 import { ref } from 'vue';
 
 const mode = ref('light');
+
+const changeMode = () => {
+    if (mode.value === 'dark') {
+        mode.value = 'light';
+    } else {
+        mode.value = 'dark';
+    }
+}
 </script>
