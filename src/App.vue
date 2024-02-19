@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import MainCanvas from './components/MainCanvas.vue';
 import Footer from './components/Footer.vue';
 import Header from './components/Header.vue';
+
+const mode = ref(false);
+
 </script>
 
 <template>
   <div class="appContainer">
     <div class="headerContainer">   
-      <Header />
+      <Header v-model:mode="mode" />
     </div>
     <div class="canvasContainer">
       <MainCanvas />
@@ -16,7 +20,6 @@ import Header from './components/Header.vue';
       <Footer />
     </div>
   </div>
-   
 </template>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
     <div @click="changeMode">
-        <div v-if="mode === 'light'" class="header">
+        <div v-if="mode" class="header">
             <span  class="material-symbols-outlined switch">
             toggle_off
             </span>
@@ -8,7 +8,7 @@
             emoji_objects
             </span>
         </div>
-        <div v-if="mode === 'dark'" class="header">
+        <div v-else class="header">
             <span  class="material-symbols-outlined switch">
             toggle_on
             </span>
@@ -20,17 +20,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 
-const mode = ref('light');
+const props = defineProps(['mode']);
+const emits = defineEmits();
 
 const changeMode = () => {
-    if (mode.value === 'dark') {
-        mode.value = 'light';
-    } else {
-        mode.value = 'dark';
-    }
-}
+emits('update:mode', !props.mode);
+};
+
+
 </script>
 
 <style scoped>
