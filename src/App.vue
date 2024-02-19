@@ -47,6 +47,7 @@ const mode = ref(false);
   width: 100%;
   height: 100%;
   background-color: green;
+  overflow: hidden;
 }
 
 .footerContainer{
