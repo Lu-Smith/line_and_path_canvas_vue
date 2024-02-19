@@ -14,10 +14,10 @@ const mode = ref(false);
       <Header v-model:mode="mode" />
     </div>
     <div class="canvasContainer">
-      <MainCanvas />
+      <MainCanvas :mode="mode" />
     </div>
     <div class="footerContainer">
-      <Footer />
+      <Footer :mode="mode" />
     </div>
   </div>
 </template>
