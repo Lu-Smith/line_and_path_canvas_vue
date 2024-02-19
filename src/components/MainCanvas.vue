@@ -10,13 +10,14 @@
 
     const canvas = ref<HTMLCanvasElement | null>(null);
     const linesArray = ref<LineOne[]>([]);
+    const numberOfLine = ref<number>(50);
    
     onMounted(() => {
         if (canvas.value) {
             const ctx = canvas.value.getContext('2d');
             canvas.value.width = window.innerWidth;
             canvas.value.height = window.innerHeight*0.786;
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < numberOfLine.value; i++) {
                 linesArray.value.push(new LineOne(canvas.value))
             }
 
