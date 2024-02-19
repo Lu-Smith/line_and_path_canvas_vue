@@ -17,8 +17,8 @@ export default class LineOne {
         this.lineWidth = Math.floor(Math.random() * 15 + 1);
         this.hue = Math.floor(Math.random() * 360);
         this.maxLength = 10;
-        this.speedX = 10;
-        this.speedY = 5;
+        this.speedX = 2;
+        this.speedY = 7;
     }
     draw(ctx: CanvasRenderingContext2D ) {
         ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
@@ -31,8 +31,8 @@ export default class LineOne {
         ctx.stroke();
     }
     update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        this.x += this.speedX + Math.random() * 50 - 25;
+        this.y += this.speedY+ Math.random() * 50 - 25;
         this.history.push({x: this.x, y: this.y});
         if (this.history.length > this.maxLength) {
             this.history.shift();
