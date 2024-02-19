@@ -10,7 +10,7 @@
 
     const canvas = ref<HTMLCanvasElement | null>(null);
     const linesArray = ref<LineOne[]>([]);
-    const numberOfLine = ref<number>(50);
+    const numberOfLine = ref<number>(1);
 
     const animate = (ctx: CanvasRenderingContext2D) => {
         //clear canvas
