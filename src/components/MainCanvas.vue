@@ -19,7 +19,7 @@
 <style scoped>
     .canvas{
         border: 10px solid red;
-        width: 100%;
-        height: 100%;
+        width: 400px;
+        height: 400px;
     }
 </style>
