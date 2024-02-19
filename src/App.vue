@@ -6,13 +6,13 @@ import Header from './components/Header.vue';
 
 <template>
   <div class="appContainer">
-    <div>   
+    <div class="headerContainer">   
       <Header />
     </div>
-    <div>
+    <div class="canvasContainer">
       <MainCanvas />
     </div>
-    <div>
+    <div class="footerContainer">
       <Footer />
     </div>
   </div>
@@ -25,5 +25,28 @@ import Header from './components/Header.vue';
  align-items: center;
  justify-content: center;
  flex-direction: column;
+ height: 100vh;
+ width: 100vw;
+}
+
+.headerContainer{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvasContainer{
+  flex: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerContainer{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
