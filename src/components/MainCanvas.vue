@@ -5,32 +5,40 @@
 <script lang="ts" setup>
     defineProps(['mode']);
 
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted} from 'vue';
     import LineOne from '../assets/LineOne';
 
     const canvas = ref<HTMLCanvasElement | null>(null);
     const linesArray = ref<LineOne[]>([]);
     const numberOfLine = ref<number>(50);
+
+    const animate = (ctx: CanvasRenderingContext2D) => {
+        //draw line
+        if (ctx) {
+        linesArray.value.forEach(object => object.draw(ctx));
+        }
+        //update line
+        requestAnimationFrame(() => animate(ctx));
+    }
    
     onMounted(() => {
         if (canvas.value) {
             const ctx = canvas.value.getContext('2d');
             canvas.value.width = window.innerWidth;
             canvas.value.height = window.innerHeight*0.786;
-            // for (let i = 0; i < numberOfLine.value; i++) {
-            //     linesArray.value.push(new LineOne(canvas.value))
-            // }
+            for (let i = 0; i < numberOfLine.value; i++) {
+                linesArray.value.push(new LineOne(canvas.value))
+            }
 
             console.log(linesArray.value);
-            const Line1 = new LineOne(canvas.value);
+            // const Line1 = new LineOne(canvas.value);
 
             if (ctx) {
-                Line1.draw(ctx);
-                // linesArray.value.forEach(object => object.draw(ctx));
+                // Line1.draw(ctx);
+                animate(ctx);
             }
-         
-
         }
+       
     });
 </script>
 
