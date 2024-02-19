@@ -4,15 +4,18 @@ export default class LineOne {
     endX: number;
     endY: number;
     lineWidth: number;
+    canvas: HTMLCanvasElement
 
     constructor(canvas: HTMLCanvasElement) {
-        this.startX = Math.random() * canvas.width;
-        this.startY = Math.random() * canvas.height;
-        this.endX = Math.random() * canvas.width;
-        this.endY = Math.random() * canvas.height;
+        this.canvas = canvas;
+        this.startX = Math.random() * this.canvas.width;
+        this.startY = Math.random() * this.canvas.height;
+        this.endX = Math.random() * this.canvas.width;
+        this.endY = Math.random() * this.canvas.height;
         this.lineWidth = Math.floor(Math.random() * 15 + 1);
     }
     draw(ctx: CanvasRenderingContext2D ) {
+        ctx.strokeStyle = 'red';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.startX, this.startY);
