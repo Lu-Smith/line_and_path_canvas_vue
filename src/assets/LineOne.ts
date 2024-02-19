@@ -1,18 +1,16 @@
 export default class LineOne {
-    startX: number;
-    startY: number;
-    endX: number;
-    endY: number;
-    lineWidth: number;
+    x: number;
+    y: number;
+    history: { x: number; y: number }[];
+    lineWidth: number
     canvas: HTMLCanvasElement;
     hue: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
-        this.startX = Math.random() * this.canvas.width;
-        this.startY = Math.random() * this.canvas.height;
-        this.endX = Math.random() * this.canvas.width;
-        this.endY = Math.random() * this.canvas.height;
+        this.x = Math.random() * this.canvas.width;
+        this.y = Math.random() * this.canvas.height;
+        this.history = [{x: this.x, y: this.y}];
         this.lineWidth = Math.floor(Math.random() * 15 + 1);
         this.hue = Math.floor(Math.random() * 360);
     }
@@ -20,8 +18,15 @@ export default class LineOne {
         ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
-        ctx.moveTo(this.startX, this.startY);
-        ctx.lineTo(this.endX, this.endY);
+        ctx.moveTo(this.history[0].x, this.history[0].y);
+        for ( let i = 0; i < 3; i++) {
+            this.x = Math.random() * this.canvas.width;
+            this.y = Math.random() * this.canvas.height;
+            this.history.push({x: this.x, y: this.y});
+        }
+        for ( let i = 0; i < this.history.length; i++ ) {
+            ctx.lineTo(this.history[i].x, this.history[i].y)
+        }
         ctx.stroke();
     }
 }
