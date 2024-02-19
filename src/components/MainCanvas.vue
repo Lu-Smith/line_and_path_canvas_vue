@@ -20,6 +20,17 @@
         canvas.value.width = window.innerWidth;
         canvas.value.height = window.innerHeight*0.786;
         console.log(ctx);
+
+        if (ctx) {
+            ctx.lineWidth = 20;
+  
+            ctx.beginPath();
+            ctx.moveTo(200, 100);
+            ctx.lineTo(150, 400);
+            ctx.stroke();
+        }
+
+
     }
     });
 </script>
