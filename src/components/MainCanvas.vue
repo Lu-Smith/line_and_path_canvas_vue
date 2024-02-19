@@ -21,14 +21,17 @@
                 linesArray.value.push(new LineOne(canvas.value))
             }
 
+           
+
             console.log(linesArray.value);
             const Line1 = new LineOne(canvas.value);
 
             if (ctx) {
-                ctx.lineWidth = 20;
-                ctx.strokeStyle = 'magenta';
                 Line1.draw(ctx);
+                linesArray.value.forEach(object => object.draw(ctx));
             }
+         
+
         }
     });
 </script>
