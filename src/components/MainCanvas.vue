@@ -13,11 +13,17 @@
     const numberOfLine = ref<number>(50);
 
     const animate = (ctx: CanvasRenderingContext2D) => {
+        //clear canvas
+        if (canvas.value) {
+            ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
+        }
         //draw line
         if (ctx) {
-        linesArray.value.forEach(object => object.draw(ctx));
+        linesArray.value.forEach(line => {
+            line.draw(ctx)
+            line.update()
+            });
         }
-        //update line
         requestAnimationFrame(() => animate(ctx));
     }
    
@@ -30,7 +36,6 @@
                 linesArray.value.push(new LineOne(canvas.value))
             }
 
-            console.log(linesArray.value);
             // const Line1 = new LineOne(canvas.value);
 
             if (ctx) {
