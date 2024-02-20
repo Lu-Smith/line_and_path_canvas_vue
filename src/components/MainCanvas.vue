@@ -49,7 +49,13 @@
             canvas.value.width = window.innerWidth;
             canvas.value.height = window.innerHeight*0.786;
             for (let i = 0; i < numberOfLine.value; i++) {
-                linesArray.value.push(new LineOne(canvas.value))
+                if (props.canvasNumber === 1) {
+                    linesArray.value.push(new LineOne(canvas.value))
+                } else if (props.canvasNumber === 2) {
+                    linesArray.value.push(new LineTwo(canvas.value))
+                } else {
+                    linesArray.value.push(new LineThree(canvas.value))
+                }
             }
 
             // const Line1 = new LineOne(canvas.value);
