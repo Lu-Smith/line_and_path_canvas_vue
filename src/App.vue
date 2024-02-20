@@ -10,6 +10,14 @@ const mode = ref(false);
 
 <template>
   <div class="appContainer">
+    <div class="buttonContainer">
+      <h3>Choose your art:</h3>
+      <div class="buttons">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+      </div>
+    </div>
     <div class="headerContainer">   
       <Header v-model:mode="mode" />
     </div>
