@@ -10,19 +10,19 @@ const mode = ref(false);
 
 <template>
   <div class="appContainer">
-    <div class="buttonContainer">
+    <div class="headerContainer">   
+      <Header v-model:mode="mode" />
+    </div>
+    <div class="canvasContainer">
+      <MainCanvas :mode="mode" />
+    </div>
+    <div class="buttonsContainer">
       <h3>Choose your art:</h3>
       <div class="buttons">
         <button>1</button>
         <button>2</button>
         <button>3</button>
       </div>
-    </div>
-    <div class="headerContainer">   
-      <Header v-model:mode="mode" />
-    </div>
-    <div class="canvasContainer">
-      <MainCanvas :mode="mode" />
     </div>
     <div class="footerContainer">
       <Footer :mode="mode" />
@@ -56,6 +56,24 @@ const mode = ref(false);
   height: 100%;
   background-color: green;
   overflow: hidden;
+}
+
+.buttonsContainer{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.buttons {
+  flex: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 5px;
 }
 
 .footerContainer{
