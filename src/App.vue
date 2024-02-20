@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import MainCanvas from './components/MainCanvas.vue';
-import Footer from './components/Footer.vue';
-import Header from './components/Header.vue';
-
-const mode = ref(false);
-
-</script>
-
 <template>
   <div class="appContainer">
     <div class="headerContainer">   
@@ -19,9 +9,9 @@ const mode = ref(false);
     <div class="buttonsContainer">
       <h3>Choose your art:</h3>
       <div class="buttons">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
+        <button @click="changeCanvas(1)">1</button>
+        <button @click="changeCanvas(2)">2</button>
+        <button @click="changeCanvas(3)">3</button>
       </div>
     </div>
     <div class="footerContainer">
@@ -29,6 +19,25 @@ const mode = ref(false);
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import MainCanvas from './components/MainCanvas.vue';
+import Footer from './components/Footer.vue';
+import Header from './components/Header.vue';
+
+const mode = ref(false);
+
+const canvasNumber = ref(1);
+
+const changeCanvas = (buttonNumber: number) => {
+  canvasNumber.value = buttonNumber;
+  alert(canvasNumber.value);
+}
+
+</script>
+
+
 
 <style scoped>
 .appContainer {
