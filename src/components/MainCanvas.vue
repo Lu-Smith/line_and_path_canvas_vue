@@ -1,8 +1,6 @@
 <template>
     <canvas ref="canvas"></canvas>
-    <div v-if="elephantImage">
-        <ElephantImage />
-    </div>
+    <ElephantImage id="elephant" />
 </template>
 
 <script lang="ts" setup>
@@ -15,41 +13,40 @@
     const props = defineProps<{canvasNumber: number, mode: boolean}>();
 
     const canvas = ref<HTMLCanvasElement | null>(null);
+    const imagePattern = ref<CanvasImageSource| null>(null);
     type Line = LineOne[] | LineTwo[] | LineThree[]
     const linesArray = ref<Line>([]);
     const numberOfLine = ref<number>(200);
 
-    const elephantImage = ref<boolean>(false);
-
     watch(() => props.canvasNumber, (newValue) => {
+        setTimeout(() => {
         linesArray.value = [];
         if (newValue === 1) {
             numberOfLine.value = 200;
+       
         } else if (newValue === 2) {
             numberOfLine.value = 100;
         } else {
             numberOfLine.value = 240;
         }
+
         if (canvas.value) {
         const ctx = canvas.value.getContext('2d');
         if (ctx) {
-            console.log(numberOfLine.value);
             for (let i = 0; i < numberOfLine.value; i++) {
-                // Push instances of specific line types based on props.canvasNumber
                 if (newValue === 1) {
-                    elephantImage.value = false;
-                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
-                    gradient1.addColorStop(0.2, 'pink');
-                    gradient1.addColorStop(0.3, 'red');
-                    gradient1.addColorStop(0.4, 'orange');
-                    gradient1.addColorStop(0.5, 'yellow');
-                    gradient1.addColorStop(0.6, 'green');
-                    gradient1.addColorStop(0.7, 'blue');
-                    gradient1.addColorStop(0.8, 'violet');
-                    ctx.strokeStyle = gradient1;
+                    // const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                    // gradient1.addColorStop(0.2, 'pink');
+                    // gradient1.addColorStop(0.3, 'red');
+                    // gradient1.addColorStop(0.4, 'orange');
+                    // gradient1.addColorStop(0.5, 'yellow');
+                    // gradient1.addColorStop(0.6, 'green');
+                    // gradient1.addColorStop(0.7, 'blue');
+                    // gradient1.addColorStop(0.8, 'violet');
+                    // ctx.strokeStyle = gradient1;
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
-                    elephantImage.value = true;
+                  
                     const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width,        canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
                     gradient1.addColorStop(0.3, 'red');
@@ -59,9 +56,12 @@
                     gradient1.addColorStop(0.7, 'blue');
                     gradient1.addColorStop(0.8, 'violet');
                     ctx.strokeStyle = gradient1;
+                    linesArray.value.push(new LineOne(canvas.value));
+                   
                     linesArray.value.push(new LineTwo(canvas.value));
+                    //canvas pattern
+                    
                 } else {
-                    elephantImage.value = false;
                     const gradient2 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
                     10, canvas.value.width * 0.5, canvas.value.height * 0.5, 350);
                     gradient2.addColorStop(0.22, 'blue');
@@ -79,7 +79,8 @@
             animate(ctx);
         }
     }
-    });
+}, 0);
+});
 
     const animate = (ctx: CanvasRenderingContext2D) => {
         //clear canvas
@@ -97,6 +98,9 @@
     }
    
     onMounted(() => {
+        const imagePattern = document.getElementById("elephant");
+        console.log(imagePattern);
+
         if (canvas.value) {
             const ctx = canvas.value.getContext('2d');
             if (ctx) {
@@ -110,7 +114,11 @@
             gradient1.addColorStop(0.6, 'green');
             gradient1.addColorStop(0.7, 'blue');
             gradient1.addColorStop(0.8, 'violet');
-            ctx.strokeStyle = gradient1;
+            // ctx.strokeStyle = gradient1;
+            if(imagePattern) {
+            const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
+            ctx.strokeStyle = pattern1;  
+            }
 
             for (let i = 0; i < numberOfLine.value; i++) {
                     linesArray.value.push(new LineOne(canvas.value))
