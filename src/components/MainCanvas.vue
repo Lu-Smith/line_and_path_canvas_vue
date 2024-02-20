@@ -13,7 +13,6 @@
     const props = defineProps<{canvasNumber: number, mode: boolean}>();
 
     const canvas = ref<HTMLCanvasElement | null>(null);
-    const imagePattern = ref<CanvasImageSource| null>(null);
     type Line = LineOne[] | LineTwo[] | LineThree[]
     const linesArray = ref<Line>([]);
     const numberOfLine = ref<number>(200);
@@ -98,7 +97,7 @@
     }
    
     onMounted(() => {
-        const imagePattern = document.getElementById("elephant");
+        const imagePattern = document.getElementById("elephant") as CanvasImageSource;
         console.log(imagePattern);
 
         if (canvas.value) {
@@ -116,8 +115,9 @@
             gradient1.addColorStop(0.8, 'violet');
             // ctx.strokeStyle = gradient1;
             if(imagePattern) {
-            const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
-            ctx.strokeStyle = pattern1;  
+                ctx.translate(canvas.value.width/2-300, 45);
+                const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
+                ctx.strokeStyle = pattern1 ?? 'black';  
             }
 
             for (let i = 0; i < numberOfLine.value; i++) {
