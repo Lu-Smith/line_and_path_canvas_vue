@@ -3,14 +3,29 @@
 </template>
 
 <script lang="ts" setup>
-    import { ref, onMounted} from 'vue';
+    import { ref, onMounted, watch} from 'vue';
     import LineOne from '../assets/LineOne';
+    import LineTwo from '../assets/LineTwo';
+    import LineThree from '../assets/LineThree';
 
-    defineProps<{canvasNumber: number, mode: boolean}>();
+    const props = defineProps<{canvasNumber: number, mode: boolean}>();
 
     const canvas = ref<HTMLCanvasElement | null>(null);
     const linesArray = ref<LineOne[]>([]);
     const numberOfLine = ref<number>(100);
+
+    watch(() => props.canvasNumber, (newValue) => {
+        console.log(numberOfLine.value);
+
+        if (newValue === 2) {
+            numberOfLine.value = 10;
+        } else if (newValue === 1) {
+            numberOfLine.value = 1;
+        } else {
+            numberOfLine.value = 100;
+        }
+    });
+
 
     const animate = (ctx: CanvasRenderingContext2D) => {
         //clear canvas
