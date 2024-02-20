@@ -4,7 +4,7 @@
       <Header v-model:mode="mode" />
     </div>
     <div class="canvasContainer">
-      <MainCanvas :mode="mode" />
+      <MainCanvas :mode="mode" :canvasNumber="canvasNumber"/>
     </div>
     <div class="buttonsContainer">
       <h3>Choose your art:</h3>
@@ -32,7 +32,6 @@ const canvasNumber = ref(1);
 
 const changeCanvas = (buttonNumber: number) => {
   canvasNumber.value = buttonNumber;
-  alert(canvasNumber.value);
 }
 
 </script>
