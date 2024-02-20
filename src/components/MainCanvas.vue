@@ -17,12 +17,12 @@
 
     watch(() => props.canvasNumber, (newValue) => {
         linesArray.value = [];
-        if (newValue === 2) {
-            numberOfLine.value = 10;
-        } else if (newValue === 1) {
+        if (newValue === 1) {
+            numberOfLine.value = 100;
+        } else if (newValue === 2) {
             numberOfLine.value = 1;
         } else {
-            numberOfLine.value = 100;
+            numberOfLine.value = 10;
         }
         if (canvas.value) {
         const ctx = canvas.value.getContext('2d');
@@ -67,17 +67,9 @@
             if (ctx) {
             canvas.value.width = window.innerWidth;
             canvas.value.height = window.innerHeight*0.786;
-            console.log(numberOfLine.value);
             for (let i = 0; i < numberOfLine.value; i++) {
-                if (props.canvasNumber === 1) {
                     linesArray.value.push(new LineOne(canvas.value))
-                } else if (props.canvasNumber === 2) {
-                    linesArray.value.push(new LineTwo(canvas.value))
-                } else {
-                    linesArray.value.push(new LineThree(canvas.value))
-                }
             }
-
             // const Line1 = new LineOne(canvas.value);
             // Line1.draw(ctx);
             animate(ctx);
