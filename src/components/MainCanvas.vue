@@ -13,14 +13,14 @@
     const canvas = ref<HTMLCanvasElement | null>(null);
     type Line = LineOne[] | LineTwo[] | LineThree[]
     const linesArray = ref<Line>([]);
-    const numberOfLine = ref<number>(100);
+    const numberOfLine = ref<number>(200);
 
     watch(() => props.canvasNumber, (newValue) => {
         linesArray.value = [];
         if (newValue === 1) {
-            numberOfLine.value = 100;
+            numberOfLine.value = 200;
         } else if (newValue === 2) {
-            numberOfLine.value = 1;
+            numberOfLine.value = 100;
         } else {
             numberOfLine.value = 20;
         }
@@ -42,6 +42,13 @@
                     ctx.strokeStyle = gradient1;
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
+                    const gradient2 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
+                    30, canvas.value.width * 0.5, canvas.value.height * 0.5, 200);
+                    gradient2.addColorStop(0.4, 'green');
+                    gradient2.addColorStop(0.6, 'blue');
+                    gradient2.addColorStop(0.8, 'yellow');
+                    gradient2.addColorStop(0.9, 'blue');
+                    ctx.strokeStyle = gradient2;
                     linesArray.value.push(new LineTwo(canvas.value));
                 } else {
                     linesArray.value.push(new LineThree(canvas.value));
