@@ -37,8 +37,8 @@ export default class LineOne {
     update() {
         this.timer++;
         if (this.timer < this.lifeSpan) {
-            this.x += this.speedX + Math.random() * 30 - 15;
-            this.y += this.speedY+ Math.random() * 20 - 25;
+            this.x += this.speedX + Math.random() * 20 - 10;
+            this.y += this.speedY+ Math.random() * 15 - 8;
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) {
                 this.history.shift();
