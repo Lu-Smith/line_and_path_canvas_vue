@@ -11,7 +11,8 @@
     const props = defineProps<{canvasNumber: number, mode: boolean}>();
 
     const canvas = ref<HTMLCanvasElement | null>(null);
-    const linesArray = ref<LineOne[]>([]);
+    type Line = LineOne[] | LineTwo[] | LineThree[]
+    const linesArray = ref<Line>([]);
     const numberOfLine = ref<number>(100);
 
     watch(() => props.canvasNumber, (newValue) => {
