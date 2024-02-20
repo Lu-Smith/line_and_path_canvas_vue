@@ -17,7 +17,7 @@ export default class LineTwo {
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
         this.lineWidth = Math.floor(Math.random() * 15 + 1);
-        this.hue = Math.floor(Math.random() * 360);
+        this.hue = Math.floor(Math.random() * 160);
         this.maxLength = Math.floor(Math.random() * 150 + 10);
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = 7;
