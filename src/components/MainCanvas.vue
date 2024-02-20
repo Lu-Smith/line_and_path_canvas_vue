@@ -3,14 +3,14 @@
 </template>
 
 <script lang="ts" setup>
-    defineProps(['mode']);
-
     import { ref, onMounted} from 'vue';
     import LineOne from '../assets/LineOne';
 
+    defineProps<{canvasNumber: number, mode: boolean}>();
+
     const canvas = ref<HTMLCanvasElement | null>(null);
     const linesArray = ref<LineOne[]>([]);
-    const numberOfLine = ref<number>(20);
+    const numberOfLine = ref<number>(100);
 
     const animate = (ctx: CanvasRenderingContext2D) => {
         //clear canvas
