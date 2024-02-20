@@ -17,15 +17,15 @@ export default class LineThree {
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
         this.lineWidth = Math.floor(Math.random() * 15 + 1);
-        this.hue = Math.floor(Math.random() * 70);
-        this.maxLength = Math.floor(Math.random() * 120 + 10);
-        this.speedX = Math.random() * 5 - 0.5;
-        this.speedY = 10;
-        this.lifeSpan = this.maxLength * 4;
+        this.hue = Math.floor(Math.random() * 160);
+        this.maxLength = Math.floor(Math.random() * 150 + 10);
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = 7;
+        this.lifeSpan = this.maxLength * 3;
         this.timer = 0;
     }
     draw(ctx: CanvasRenderingContext2D ) {
-        ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
+        // ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.history[0].x, this.history[0].y);
@@ -38,7 +38,7 @@ export default class LineThree {
         this.timer++;
         if (this.timer < this.lifeSpan) {
             this.x += this.speedX + Math.random() * 20 - 10;
-            this.y += this.speedY + Math.random() * 5 - 8;
+            this.y += this.speedY+ Math.random() * 15 - 8;
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) {
                 this.history.shift();
