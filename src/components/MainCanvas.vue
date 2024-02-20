@@ -1,5 +1,8 @@
 <template>
     <canvas ref="canvas"></canvas>
+    <div v-if="elephantImage">
+        <ElephantImage />
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -7,6 +10,7 @@
     import LineOne from '../assets/LineOne';
     import LineTwo from '../assets/LineTwo';
     import LineThree from '../assets/LineThree';
+    import ElephantImage from './ElephantImage.vue';
 
     const props = defineProps<{canvasNumber: number, mode: boolean}>();
 
@@ -14,6 +18,8 @@
     type Line = LineOne[] | LineTwo[] | LineThree[]
     const linesArray = ref<Line>([]);
     const numberOfLine = ref<number>(200);
+
+    const elephantImage = ref<boolean>(false);
 
     watch(() => props.canvasNumber, (newValue) => {
         linesArray.value = [];
@@ -31,6 +37,7 @@
             for (let i = 0; i < numberOfLine.value; i++) {
                 // Push instances of specific line types based on props.canvasNumber
                 if (newValue === 1) {
+                    elephantImage.value = false;
                     const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
                     gradient1.addColorStop(0.3, 'red');
@@ -42,7 +49,8 @@
                     ctx.strokeStyle = gradient1;
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
-                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                    elephantImage.value = true;
+                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width,        canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
                     gradient1.addColorStop(0.3, 'red');
                     gradient1.addColorStop(0.4, 'orange');
@@ -53,6 +61,7 @@
                     ctx.strokeStyle = gradient1;
                     linesArray.value.push(new LineTwo(canvas.value));
                 } else {
+                    elephantImage.value = false;
                     const gradient2 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
                     10, canvas.value.width * 0.5, canvas.value.height * 0.5, 350);
                     gradient2.addColorStop(0.22, 'blue');
