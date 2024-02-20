@@ -18,11 +18,10 @@
     const numberOfLine = ref<number>(200);
 
     watch(() => props.canvasNumber, (newValue) => {
-        setTimeout(() => {
+        // const imagePattern = document.getElementById("elephant") as CanvasImageSource;
         linesArray.value = [];
         if (newValue === 1) {
             numberOfLine.value = 200;
-       
         } else if (newValue === 2) {
             numberOfLine.value = 100;
         } else {
@@ -30,23 +29,24 @@
         }
 
         if (canvas.value) {
+        
         const ctx = canvas.value.getContext('2d');
+   
         if (ctx) {
             for (let i = 0; i < numberOfLine.value; i++) {
                 if (newValue === 1) {
-                    // const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
-                    // gradient1.addColorStop(0.2, 'pink');
-                    // gradient1.addColorStop(0.3, 'red');
-                    // gradient1.addColorStop(0.4, 'orange');
-                    // gradient1.addColorStop(0.5, 'yellow');
-                    // gradient1.addColorStop(0.6, 'green');
-                    // gradient1.addColorStop(0.7, 'blue');
-                    // gradient1.addColorStop(0.8, 'violet');
-                    // ctx.strokeStyle = gradient1;
+                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                    gradient1.addColorStop(0.2, 'pink');
+                    gradient1.addColorStop(0.3, 'red');
+                    gradient1.addColorStop(0.4, 'orange');
+                    gradient1.addColorStop(0.5, 'yellow');
+                    gradient1.addColorStop(0.6, 'green');
+                    gradient1.addColorStop(0.7, 'blue');
+                    gradient1.addColorStop(0.8, 'violet');
+                    ctx.strokeStyle = gradient1;
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
-                  
-                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width,        canvas.value.height)
+                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
                     gradient1.addColorStop(0.3, 'red');
                     gradient1.addColorStop(0.4, 'orange');
@@ -78,7 +78,6 @@
             animate(ctx);
         }
     }
-}, 0);
 });
 
     const animate = (ctx: CanvasRenderingContext2D) => {
@@ -114,11 +113,15 @@
             gradient1.addColorStop(0.7, 'blue');
             gradient1.addColorStop(0.8, 'violet');
             // ctx.strokeStyle = gradient1;
+           
             if(imagePattern) {
+                // ctx.save();
                 ctx.translate(canvas.value.width/2-300, 45);
                 const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
-                ctx.strokeStyle = pattern1 ?? 'black';  
+                ctx.strokeStyle = pattern1 ?? 'black'; 
+                // ctx.restore();
             }
+        
 
             for (let i = 0; i < numberOfLine.value; i++) {
                     linesArray.value.push(new LineOne(canvas.value))
