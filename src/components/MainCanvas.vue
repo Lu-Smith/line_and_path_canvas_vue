@@ -22,7 +22,7 @@
         } else if (newValue === 2) {
             numberOfLine.value = 100;
         } else {
-            numberOfLine.value = 20;
+            numberOfLine.value = 240;
         }
         if (canvas.value) {
         const ctx = canvas.value.getContext('2d');
@@ -42,15 +42,28 @@
                     ctx.strokeStyle = gradient1;
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
-                    const gradient2 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
-                    30, canvas.value.width * 0.5, canvas.value.height * 0.5, 200);
-                    gradient2.addColorStop(0.4, 'green');
-                    gradient2.addColorStop(0.6, 'blue');
-                    gradient2.addColorStop(0.8, 'yellow');
-                    gradient2.addColorStop(0.9, 'blue');
-                    ctx.strokeStyle = gradient2;
+                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                    gradient1.addColorStop(0.2, 'pink');
+                    gradient1.addColorStop(0.3, 'red');
+                    gradient1.addColorStop(0.4, 'orange');
+                    gradient1.addColorStop(0.5, 'yellow');
+                    gradient1.addColorStop(0.6, 'green');
+                    gradient1.addColorStop(0.7, 'blue');
+                    gradient1.addColorStop(0.8, 'violet');
+                    ctx.strokeStyle = gradient1;
                     linesArray.value.push(new LineTwo(canvas.value));
                 } else {
+                    const gradient2 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
+                    10, canvas.value.width * 0.5, canvas.value.height * 0.5, 350);
+                    gradient2.addColorStop(0.22, 'blue');
+                    gradient2.addColorStop(0.3, 'black');
+                    gradient2.addColorStop(0.4, 'green');
+                    gradient2.addColorStop(0.6, 'blue');
+                    gradient2.addColorStop(0.72, 'yellow');
+                    gradient2.addColorStop(0.95, 'blue');
+                    gradient2.addColorStop(0.98, 'yellow');
+                    gradient2.addColorStop(0.99, 'blue');
+                    ctx.strokeStyle = gradient2;
                     linesArray.value.push(new LineThree(canvas.value));
                 }
             }
