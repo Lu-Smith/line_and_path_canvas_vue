@@ -16,8 +16,7 @@
     const numberOfLine = ref<number>(100);
 
     watch(() => props.canvasNumber, (newValue) => {
-        console.log(numberOfLine.value);
-
+        linesArray.value = [];
         if (newValue === 2) {
             numberOfLine.value = 10;
         } else if (newValue === 1) {
@@ -25,6 +24,25 @@
         } else {
             numberOfLine.value = 100;
         }
+        if (canvas.value) {
+        const ctx = canvas.value.getContext('2d');
+        if (ctx) {
+            canvas.value.width = window.innerWidth;
+            canvas.value.height = window.innerHeight * 0.786;
+            console.log(numberOfLine.value);
+            for (let i = 0; i < numberOfLine.value; i++) {
+                // Push instances of specific line types based on props.canvasNumber
+                if (newValue === 1) {
+                    linesArray.value.push(new LineOne(canvas.value))
+                } else if (newValue === 2) {
+                    linesArray.value.push(new LineTwo(canvas.value))
+                } else {
+                    linesArray.value.push(new LineThree(canvas.value))
+                }
+            }
+            animate(ctx);
+        }
+    }
     });
 
 
@@ -46,8 +64,10 @@
     onMounted(() => {
         if (canvas.value) {
             const ctx = canvas.value.getContext('2d');
+            if (ctx) {
             canvas.value.width = window.innerWidth;
             canvas.value.height = window.innerHeight*0.786;
+            console.log(numberOfLine.value);
             for (let i = 0; i < numberOfLine.value; i++) {
                 if (props.canvasNumber === 1) {
                     linesArray.value.push(new LineOne(canvas.value))
@@ -59,10 +79,8 @@
             }
 
             // const Line1 = new LineOne(canvas.value);
-
-            if (ctx) {
-                // Line1.draw(ctx);
-                animate(ctx);
+            // Line1.draw(ctx);
+            animate(ctx);
             }
         }
        
