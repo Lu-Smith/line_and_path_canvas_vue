@@ -22,29 +22,35 @@
         } else if (newValue === 2) {
             numberOfLine.value = 1;
         } else {
-            numberOfLine.value = 10;
+            numberOfLine.value = 20;
         }
         if (canvas.value) {
         const ctx = canvas.value.getContext('2d');
         if (ctx) {
-            canvas.value.width = window.innerWidth;
-            canvas.value.height = window.innerHeight * 0.786;
             console.log(numberOfLine.value);
             for (let i = 0; i < numberOfLine.value; i++) {
                 // Push instances of specific line types based on props.canvasNumber
                 if (newValue === 1) {
-                    linesArray.value.push(new LineOne(canvas.value))
+                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                    gradient1.addColorStop(0.2, 'pink');
+                    gradient1.addColorStop(0.3, 'red');
+                    gradient1.addColorStop(0.4, 'orange');
+                    gradient1.addColorStop(0.5, 'yellow');
+                    gradient1.addColorStop(0.6, 'green');
+                    gradient1.addColorStop(0.7, 'blue');
+                    gradient1.addColorStop(0.8, 'violet');
+                    ctx.strokeStyle = gradient1;
+                    linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
-                    linesArray.value.push(new LineTwo(canvas.value))
+                    linesArray.value.push(new LineTwo(canvas.value));
                 } else {
-                    linesArray.value.push(new LineThree(canvas.value))
+                    linesArray.value.push(new LineThree(canvas.value));
                 }
             }
             animate(ctx);
         }
     }
     });
-
 
     const animate = (ctx: CanvasRenderingContext2D) => {
         //clear canvas
@@ -66,7 +72,17 @@
             const ctx = canvas.value.getContext('2d');
             if (ctx) {
             canvas.value.width = window.innerWidth;
-            canvas.value.height = window.innerHeight*0.786;
+            canvas.value.height = window.innerHeight*0.712;
+            const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+            gradient1.addColorStop(0.2, 'pink');
+            gradient1.addColorStop(0.3, 'red');
+            gradient1.addColorStop(0.4, 'orange');
+            gradient1.addColorStop(0.5, 'yellow');
+            gradient1.addColorStop(0.6, 'green');
+            gradient1.addColorStop(0.7, 'blue');
+            gradient1.addColorStop(0.8, 'violet');
+            ctx.strokeStyle = gradient1;
+
             for (let i = 0; i < numberOfLine.value; i++) {
                     linesArray.value.push(new LineOne(canvas.value))
             }
@@ -82,6 +98,6 @@
 <style scoped>
     canvas {
         border: 5px solid red;
-        background-color: antiquewhite;
+        background-color: rgb(44, 44, 44);
     }
 </style>
