@@ -10,6 +10,8 @@ export default class LineIntro {
     speedY: number;
     lifeSpan: number;
     timer: number;
+    angle: number;
+    curve: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -23,6 +25,8 @@ export default class LineIntro {
         this.speedY = 7;
         this.lifeSpan = this.maxLength * 3;
         this.timer = 0;
+        this.angle = 0;
+        this.curve = 30;
     }
     draw(ctx: CanvasRenderingContext2D ) {
         // ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
