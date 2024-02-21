@@ -9,13 +9,14 @@
     import LineTwo from '../assets/LineTwo';
     import LineThree from '../assets/LineThree';
     import LineFour from '../assets/LineFour';
+    import LineFive from '../assets/LineFive';
     import LineIntro from '../assets/LineIntro';
     import ElephantImage from './ElephantImage.vue';
 
     const props = defineProps<{canvasNumber: number, mode: boolean}>();
 
     const canvas = ref<HTMLCanvasElement | null>(null);
-    type Line = LineOne[] | LineTwo[] | LineThree[] | LineIntro[]
+    type Line = LineOne[] | LineTwo[] | LineThree[] | LineIntro[] | LineFour[] | LineFive[]
     const linesArray = ref<Line>([]);
     const numberOfLine = ref<number>(100);
 
@@ -28,8 +29,10 @@
             numberOfLine.value = 100;
         } else if (newValue === 3) {
             numberOfLine.value = 240;
-        } else {
+        } else if (newValue === 4) {
             numberOfLine.value = 80;
+        } else {
+            numberOfLine.value = 40;
         }
 
         if (canvas.value) {
@@ -76,14 +79,20 @@
                     gradient2.addColorStop(0.99, 'blue');
                     ctx.strokeStyle = gradient2;
                     linesArray.value.push(new LineThree(canvas.value));
-                    
-                } else {
+                } else if (newValue === 4) {
                     //canvas shadows
                     ctx.shadowOffsetX = 2;
                     ctx.shadowOffsetY = 2;
                     ctx.shadowColor = 'black';
                    
                     linesArray.value.push(new LineFour(canvas.value));
+                } else {
+                    //canvas shadows
+                    ctx.shadowOffsetX = 2;
+                    ctx.shadowOffsetY = 2;
+                    ctx.shadowColor = 'white';
+                   
+                    linesArray.value.push(new LineFive(canvas.value));
                 }
             }
             animate(ctx);
