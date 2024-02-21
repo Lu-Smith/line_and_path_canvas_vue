@@ -11,6 +11,7 @@ export default class LineOne {
     lifeSpan: number;
     timer: number;
     angle: number;
+    curve: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -25,6 +26,7 @@ export default class LineOne {
         this.lifeSpan = this.maxLength * 3;
         this.timer = 0;
         this.angle = 0;
+        this.curve = 30;
     }
     draw(ctx: CanvasRenderingContext2D ) {
         // ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
@@ -40,7 +42,7 @@ export default class LineOne {
         this.timer++;
         this.angle += 0.1;
         if (this.timer < this.lifeSpan) {
-            this.x += this.speedX + Math.random() * 20 - 10;
+            this.x += Math.sin(this.angle) * this.curve;
             this.y += this.speedY+ Math.random() * 15 - 8;
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) {
