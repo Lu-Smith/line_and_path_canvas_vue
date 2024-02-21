@@ -31,9 +31,12 @@
         if (canvas.value) {
         const ctx = canvas.value.getContext('2d');
         if (ctx) {
+            canvas.value.width = window.innerWidth;
+            canvas.value.height = window.innerHeight*0.712;
+ 
             for (let i = 0; i < numberOfLine.value; i++) {
                 if (newValue === 1) {
-                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
                     gradient1.addColorStop(0.3, 'red');
                     gradient1.addColorStop(0.4, 'orange');
@@ -42,6 +45,7 @@
                     gradient1.addColorStop(0.7, 'blue');
                     gradient1.addColorStop(0.8, 'violet');
                     ctx.strokeStyle = gradient1;
+                   
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
                     const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
@@ -53,10 +57,8 @@
                     gradient1.addColorStop(0.7, 'blue');
                     gradient1.addColorStop(0.8, 'violet');
                     ctx.strokeStyle = gradient1;
-                    linesArray.value.push(new LineOne(canvas.value));
                    
                     linesArray.value.push(new LineTwo(canvas.value));
-                    //canvas pattern
                     
                 } else {
                     const gradient2 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
@@ -74,9 +76,8 @@
                 }
             }
             animate(ctx);
-        }
-    }
-});
+        }}
+    });
 
     const animate = (ctx: CanvasRenderingContext2D) => {
         //clear canvas
@@ -92,38 +93,37 @@
         }
         requestAnimationFrame(() => animate(ctx));
     }
+    
+    const canvasOne = (imagePattern: CanvasImageSource) => {
+        if (canvas.value) {
+            const ctx = canvas.value.getContext('2d');
+            if (ctx) {
+                canvas.value.width = window.innerWidth;
+                canvas.value.height = window.innerHeight*0.712;
+
+                //canvas shadows
+                ctx.shadowOffsetX = 2;
+                ctx.shadowOffsetY = 2;
+                ctx.shadowColor = 'white';
+        
+                if(imagePattern) {
+                    ctx.translate(canvas.value.width/2-300, 45);
+                    const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
+                    ctx.strokeStyle = pattern1 ?? 'black'; 
+                }
+            
+                for (let i = 0; i < numberOfLine.value; i++) {
+                        linesArray.value.push(new LineOne(canvas.value))
+                }
+                animate(ctx);
+            }
+        }
+    }
    
     onMounted(() => {
         const imagePattern = document.getElementById("elephant") as CanvasImageSource;
         console.log(imagePattern);
-
-        if (canvas.value) {
-            const ctx = canvas.value.getContext('2d');
-            if (ctx) {
-            canvas.value.width = window.innerWidth;
-            canvas.value.height = window.innerHeight*0.712;
-
-            //canvas shadows
-            ctx.shadowOffsetX = 2;
-            ctx.shadowOffsetY = 2;
-            ctx.shadowColor = 'white';
-       
-           
-            if(imagePattern) {
-                ctx.translate(canvas.value.width/2-300, 45);
-                const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
-                ctx.strokeStyle = pattern1 ?? 'black'; 
-            }
-        
-            for (let i = 0; i < numberOfLine.value; i++) {
-                    linesArray.value.push(new LineOne(canvas.value))
-            }
-            // const Line1 = new LineOne(canvas.value);
-            // Line1.draw(ctx);
-            animate(ctx);
-            }
-        }
-       
+        canvasOne(imagePattern);
     });
 </script>
 
