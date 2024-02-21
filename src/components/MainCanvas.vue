@@ -22,7 +22,7 @@
         // const imagePattern = document.getElementById("elephant") as CanvasImageSource;
         linesArray.value = [];
         if (newValue === 1) {
-            numberOfLine.value = 300;
+            numberOfLine.value = 150;
         } else if (newValue === 2) {
             numberOfLine.value = 100;
         } else {
