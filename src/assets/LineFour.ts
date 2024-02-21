@@ -1,4 +1,4 @@
-export default class LineOne {
+export default class LineFour {
     x: number;
     y: number;
     history: { x: number; y: number }[];
