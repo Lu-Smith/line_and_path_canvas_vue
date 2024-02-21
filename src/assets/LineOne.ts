@@ -46,7 +46,7 @@ export default class LineOne {
         this.curve += this.vc;
         if (this.timer < this.lifeSpan) {
             this.x += Math.sin(this.angle) * this.curve;
-            this.y += this.speedY;
+            this.y += Math.cos(this.angle) * this.curve;
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) {
                 this.history.shift();
@@ -62,5 +62,6 @@ export default class LineOne {
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
         this.timer = 0;
+        this.curve = 0;
     }
 }
