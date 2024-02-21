@@ -15,7 +15,7 @@
     const canvas = ref<HTMLCanvasElement | null>(null);
     type Line = LineOne[] | LineTwo[] | LineThree[]
     const linesArray = ref<Line>([]);
-    const numberOfLine = ref<number>(200);
+    const numberOfLine = ref<number>(100);
 
     watch(() => props.canvasNumber, (newValue) => {
         // const imagePattern = document.getElementById("elephant") as CanvasImageSource;
@@ -36,7 +36,13 @@
  
             for (let i = 0; i < numberOfLine.value; i++) {
                 if (newValue === 1) {
-                const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                    
+                    //canvas shadows
+                    ctx.shadowOffsetX = 2;
+                    ctx.shadowOffsetY = 2;
+                    ctx.shadowColor = 'white';
+
+                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
                     gradient1.addColorStop(0.3, 'red');
                     gradient1.addColorStop(0.4, 'orange');
@@ -104,7 +110,7 @@
                 //canvas shadows
                 ctx.shadowOffsetX = 2;
                 ctx.shadowOffsetY = 2;
-                ctx.shadowColor = 'white';
+                ctx.shadowColor = 'black';
         
                 if(imagePattern) {
                     ctx.translate(canvas.value.width/2-300, 45);
