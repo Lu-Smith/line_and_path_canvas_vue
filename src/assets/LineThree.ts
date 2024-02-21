@@ -14,6 +14,7 @@ export default class LineThree {
     curve: number;
     vc: number;
     va: number;
+    breakPoint: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -26,6 +27,7 @@ export default class LineThree {
         this.speedX = Math.random() * 3 - 0.5;
         this.speedY = Math.random() * 3 - 0.5;
         this.lifeSpan = this.maxLength * 2;
+        this.breakPoint = this.lifeSpan * 0.85;
         this.timer = 0;
         this.angle = 0;
         this.curve = 30;
