@@ -1,5 +1,8 @@
 <template>
-    <canvas ref="canvas"></canvas>
+    <canvas 
+    ref="canvas"
+    :style="{ backgroundColor: mode ? 'white' : 'black', border: mode ? '2px solid #feffdf' : '2px solid #1d1716' }"
+    ></canvas>
     <ElephantImage id="elephant" />
 </template>
 
@@ -176,10 +179,3 @@
         canvasOne(imagePattern);
     });
 </script>
-
-<style scoped>
-    canvas {
-        border: 5px solid red;
-        background-color: rgb(9, 0, 0);
-    }
-</style>
