@@ -13,6 +13,7 @@
         <button @click="changeCanvas(2)">2</button>
         <button @click="changeCanvas(3)">3</button>
         <button @click="changeCanvas(4)">4</button>
+        <button @click="changeCanvas(5)">5</button>
       </div>
     </div>
     <div class="footerContainer">
