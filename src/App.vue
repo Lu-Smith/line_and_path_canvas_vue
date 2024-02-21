@@ -106,6 +106,11 @@ const changeCanvas = (buttonNumber: number) => {
   justify-content: center;
   flex-direction: row;
   gap: 5px;
+  transition: all 200ms ease-in-out;
+}
+
+.buttons:hover {
+  color: white;
 }
 
 .footerContainer{
