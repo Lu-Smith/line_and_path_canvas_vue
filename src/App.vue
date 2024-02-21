@@ -1,6 +1,6 @@
 <template>
-  <div class="appContainer">
-    <div class="headerContainer">   
+  <div class="appContainer" :style="{ backgroundColor: mode ? '#42b883' : '#402a23', color: mode ? '#feffdf' : '#f3bc77' }">
+    <div class="headerContainer" :style="{ background: mode ? 'linear-gradient(to right, #42b883, rgb(51, 139, 147), #42b883)' : 'linear-gradient(to right, #402a23, #141010, #402a23'}">   
       <Header v-model:mode="mode" />
     </div>
     <div class="canvasContainer">
@@ -9,12 +9,30 @@
     <div class="buttonsContainer">
       <h3>Choose your art:</h3>
       <div class="buttons">
-        <button @click="changeCanvas(1)">1</button>
-        <button @click="changeCanvas(5)">2</button>
-        <button @click="changeCanvas(3)">3</button>
-        <button @click="changeCanvas(4)">4</button>
-        <button @click="changeCanvas(2)">5</button>
-        <button @click="changeCanvas(6)">6</button>
+        <button @click="changeCanvas(1)" 
+        :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
+          1
+        </button>
+        <button @click="changeCanvas(5)"
+        :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
+          2
+        </button>
+        <button @click="changeCanvas(3)"
+        :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
+          3
+        </button>
+        <button @click="changeCanvas(4)"
+        :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
+          4
+        </button>
+        <button @click="changeCanvas(2)"
+        :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
+          5
+        </button>
+        <button @click="changeCanvas(6)"
+        :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
+          6
+        </button>
       </div>
     </div>
     <div class="footerContainer">
@@ -49,6 +67,8 @@ const changeCanvas = (buttonNumber: number) => {
  flex-direction: column;
  height: 100vh;
  width: 100vw;
+ font-family: "Roboto", sans-serif;
+ letter-spacing: 1px;
 }
 
 .headerContainer{
@@ -56,6 +76,7 @@ const changeCanvas = (buttonNumber: number) => {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100vw;
 }
 
 .canvasContainer{
