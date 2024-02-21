@@ -14,18 +14,20 @@ export default class LineOne {
     curve: number;
     vc: number;
     va: number;
+    breakPoint: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
         this.x = Math.random() * this.canvas.width;
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
-        this.lineWidth = Math.floor(Math.random() * 12 + 1);
+        this.lineWidth = Math.floor(Math.random() * 32 + 1);
         this.hue = Math.floor(Math.random() * 360);
         this.maxLength = Math.floor(Math.random() * 150 + 10);
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = 7;
         this.lifeSpan = this.maxLength * 3;
+        this.breakPoint = this.lifeSpan * 0.85;
         this.timer = 0;
         this.angle = 0;
         this.curve = 10;
@@ -33,7 +35,7 @@ export default class LineOne {
         this.va = Math.random() * 0.5 - 0.25;
     }
     draw(ctx: CanvasRenderingContext2D ) {
-        ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
+        // ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.history[0].x, this.history[0].y);
@@ -47,6 +49,9 @@ export default class LineOne {
         this.angle += this.va;
         this.curve += this.vc;
         if (this.timer < this.lifeSpan) {
+            if (this.timer >  this.breakPoint) {
+                this.va *= -1.12;
+            }
             this.x += Math.sin(this.angle) * this.curve;
             this.y += Math.cos(this.angle) * this.curve;
             this.history.push({x: this.x, y: this.y});
@@ -64,6 +69,8 @@ export default class LineOne {
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
         this.timer = 0;
+        this.angle = 0;
         this.curve = 0;
+        this.va = Math.random() * 0.5 - 0.25;
     }
 }
