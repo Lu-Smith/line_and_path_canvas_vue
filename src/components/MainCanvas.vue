@@ -55,6 +55,11 @@
                    
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
+                    //canvas shadows
+                    ctx.shadowOffsetX = 4;
+                    ctx.shadowOffsetY = 3;
+                    ctx.shadowColor = 'grey';
+
                     const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
                     gradient1.addColorStop(0.3, 'red');
