@@ -29,7 +29,7 @@ export default class LineOne {
         this.curve = 10;
     }
     draw(ctx: CanvasRenderingContext2D ) {
-        // ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
+        ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.history[0].x, this.history[0].y);
