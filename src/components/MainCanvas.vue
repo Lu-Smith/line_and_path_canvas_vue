@@ -22,7 +22,7 @@
         // const imagePattern = document.getElementById("elephant") as CanvasImageSource;
         linesArray.value = [];
         if (newValue === 1) {
-            numberOfLine.value = 150;
+            numberOfLine.value = 80;
         } else if (newValue === 2) {
             numberOfLine.value = 100;
         } else {
@@ -42,16 +42,6 @@
                     ctx.shadowOffsetX = 2;
                     ctx.shadowOffsetY = 2;
                     ctx.shadowColor = 'red';
-
-                    const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
-                    gradient1.addColorStop(0.2, 'pink');
-                    gradient1.addColorStop(0.3, 'red');
-                    gradient1.addColorStop(0.4, 'orange');
-                    gradient1.addColorStop(0.5, 'yellow');
-                    gradient1.addColorStop(0.6, 'green');
-                    gradient1.addColorStop(0.7, 'blue');
-                    gradient1.addColorStop(0.8, 'violet');
-                    ctx.strokeStyle = gradient1;
                    
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
