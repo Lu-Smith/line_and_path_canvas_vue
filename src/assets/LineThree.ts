@@ -19,12 +19,12 @@ export default class LineThree {
         this.x = Math.random() * this.canvas.width;
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
-        this.lineWidth = Math.floor(Math.random() * 15 + 1);
+        this.lineWidth = Math.floor(Math.random() * 10 + 1);
         this.hue = Math.floor(Math.random() * 160);
-        this.maxLength = Math.floor(Math.random() * 150 + 10);
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = 7;
-        this.lifeSpan = this.maxLength * 3;
+        this.maxLength = Math.floor(Math.random() * 40 + 10);
+        this.speedX = Math.random() * 3 - 0.5;
+        this.speedY = Math.random() * 3 - 0.5;
+        this.lifeSpan = this.maxLength * 2;
         this.timer = 0;
         this.angle = 0;
         this.curve = 30;
@@ -42,9 +42,11 @@ export default class LineThree {
     }
     update() {
         this.timer++;
+        this.angle += 0.1;
+        this.curve += this.vc;
         if (this.timer < this.lifeSpan) {
-            this.x += this.speedX + Math.random() * 20 - 10;
-            this.y += this.speedY+ Math.random() * 15 - 8;
+            this.x += Math.sin(this.angle) * this.curve;
+            this.y += Math.cos(this.angle) * this.curve;
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) {
                 this.history.shift();
@@ -60,5 +62,6 @@ export default class LineThree {
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
         this.timer = 0;
+        this.curve = 0;
     }
 }
