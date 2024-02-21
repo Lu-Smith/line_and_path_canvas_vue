@@ -1,10 +1,9 @@
-export default class LineOne {
+export default class LineIntro {
     x: number;
     y: number;
     history: { x: number; y: number }[];
     lineWidth: number
     canvas: HTMLCanvasElement;
-    hue: number;
     maxLength: number;
     speedX: number;
     speedY: number;
@@ -17,7 +16,6 @@ export default class LineOne {
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
         this.lineWidth = Math.floor(Math.random() * 15 + 1);
-        this.hue = Math.floor(Math.random() * 360);
         this.maxLength = Math.floor(Math.random() * 150 + 10);
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = 7;
@@ -25,7 +23,6 @@ export default class LineOne {
         this.timer = 0;
     }
     draw(ctx: CanvasRenderingContext2D ) {
-        // ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.history[0].x, this.history[0].y);
