@@ -10,10 +10,11 @@
       <h3>Choose your art:</h3>
       <div class="buttons">
         <button @click="changeCanvas(1)">1</button>
-        <button @click="changeCanvas(2)">2</button>
+        <button @click="changeCanvas(5)">2</button>
         <button @click="changeCanvas(3)">3</button>
         <button @click="changeCanvas(4)">4</button>
-        <button @click="changeCanvas(5)">5</button>
+        <button @click="changeCanvas(2)">5</button>
+        <button @click="changeCanvas(6)">6</button>
       </div>
     </div>
     <div class="footerContainer">
