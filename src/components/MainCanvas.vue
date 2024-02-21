@@ -10,6 +10,7 @@
     import LineThree from '../assets/LineThree';
     import LineFour from '../assets/LineFour';
     import LineFive from '../assets/LineFive';
+    import LineSix from '../assets/LineSix';
     import LineIntro from '../assets/LineIntro';
     import ElephantImage from './ElephantImage.vue';
 
@@ -31,8 +32,10 @@
             numberOfLine.value = 240;
         } else if (newValue === 4) {
             numberOfLine.value = 80;
+        } else if (newValue === 5) {
+            numberOfLine.value = 20;
         } else {
-            numberOfLine.value = 40;
+            numberOfLine.value = 60;
         }
 
         if (canvas.value) {
@@ -43,17 +46,21 @@
  
             for (let i = 0; i < numberOfLine.value; i++) {
                 if (newValue === 1) {
+                    const gradient4 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
+                    gradient4.addColorStop(0.2, 'pink');
+                    gradient4.addColorStop(0.5, 'red');
+                    gradient4.addColorStop(0.8, 'orange');
                     //canvas shadows
-                    ctx.shadowOffsetX = 2;
-                    ctx.shadowOffsetY = 2;
-                    ctx.shadowColor = 'red';
-                   
+                    ctx.shadowOffsetX = 4;
+                    ctx.shadowOffsetY = 3;
+                    ctx.shadowColor = '#f5c7f7';
+                    ctx.strokeStyle = gradient4;
                     linesArray.value.push(new LineOne(canvas.value));
                 } else if (newValue === 2) {
                     //canvas shadows
                     ctx.shadowOffsetX = 4;
                     ctx.shadowOffsetY = 3;
-                    ctx.shadowColor = 'grey';
+                    ctx.shadowColor = '#fcff82';
 
                     const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
@@ -86,13 +93,24 @@
                     ctx.shadowColor = 'black';
                    
                     linesArray.value.push(new LineFour(canvas.value));
-                } else {
+                } else if (newValue === 5) {
                     //canvas shadows
                     ctx.shadowOffsetX = 2;
                     ctx.shadowOffsetY = 2;
-                    ctx.shadowColor = 'white';
+                    ctx.shadowColor = 'black';
                    
                     linesArray.value.push(new LineFive(canvas.value));
+                } else {
+                    const gradient3 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
+                    10, canvas.value.width * 0.5, canvas.value.height * 0.5, 350);
+                    gradient3.addColorStop(0.2, 'white');
+                    gradient3.addColorStop(0.8, '#f67280');
+                    //canvas shadows
+                    ctx.shadowOffsetX = 2;
+                    ctx.shadowOffsetY = 2;
+                    ctx.shadowColor = 'black';
+                    ctx.strokeStyle = gradient3;
+                    linesArray.value.push(new LineSix(canvas.value));
                 }
             }
             animate(ctx);
@@ -150,6 +168,6 @@
 <style scoped>
     canvas {
         border: 5px solid red;
-        background-color: rgb(44, 44, 44);
+        background-color: rgb(9, 0, 0);
     }
 </style>
