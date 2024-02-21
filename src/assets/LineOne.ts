@@ -13,6 +13,7 @@ export default class LineOne {
     angle: number;
     curve: number;
     vc: number;
+    va: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -28,7 +29,8 @@ export default class LineOne {
         this.timer = 0;
         this.angle = 0;
         this.curve = 10;
-        this.vc = 0.25;
+        this.vc = Math.random() * 0.4 - 0.2;
+        this.va = Math.random() * 0.5 - 0.25;
     }
     draw(ctx: CanvasRenderingContext2D ) {
         ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
@@ -42,7 +44,7 @@ export default class LineOne {
     }
     update() {
         this.timer++;
-        this.angle += 0.1;
+        this.angle += this.va;
         this.curve += this.vc;
         if (this.timer < this.lifeSpan) {
             this.x += Math.sin(this.angle) * this.curve;
