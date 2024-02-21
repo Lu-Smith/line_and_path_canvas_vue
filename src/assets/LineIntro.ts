@@ -13,6 +13,7 @@ export default class LineIntro {
     angle: number;
     curve: number;
     vc: number;
+    va: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -29,6 +30,7 @@ export default class LineIntro {
         this.angle = 0;
         this.curve = 30;
         this.vc = 0.25;
+        this.va = 0.25;
     }
     draw(ctx: CanvasRenderingContext2D ) {
         // ctx.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
