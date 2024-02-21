@@ -8,12 +8,13 @@
     import LineOne from '../assets/LineOne';
     import LineTwo from '../assets/LineTwo';
     import LineThree from '../assets/LineThree';
+    import LineIntro from '../assets/LineIntro';
     import ElephantImage from './ElephantImage.vue';
 
     const props = defineProps<{canvasNumber: number, mode: boolean}>();
 
     const canvas = ref<HTMLCanvasElement | null>(null);
-    type Line = LineOne[] | LineTwo[] | LineThree[]
+    type Line = LineOne[] | LineTwo[] | LineThree[] | LineIntro[]
     const linesArray = ref<Line>([]);
     const numberOfLine = ref<number>(100);
 
@@ -40,7 +41,7 @@
                     //canvas shadows
                     ctx.shadowOffsetX = 2;
                     ctx.shadowOffsetY = 2;
-                    ctx.shadowColor = 'white';
+                    ctx.shadowColor = 'red';
 
                     const gradient1 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
                     gradient1.addColorStop(0.2, 'pink');
@@ -119,7 +120,7 @@
                 }
             
                 for (let i = 0; i < numberOfLine.value; i++) {
-                        linesArray.value.push(new LineOne(canvas.value))
+                        linesArray.value.push(new LineIntro(canvas.value))
                 }
                 animate(ctx);
             }
