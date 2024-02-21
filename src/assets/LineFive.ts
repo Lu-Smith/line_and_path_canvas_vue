@@ -30,7 +30,7 @@ export default class LineFive {
         this.breakPoint = this.lifeSpan * 0.85;
         this.timer = 0;
         this.angle = 0;
-        this.curve = 10;
+        this.curve = 0.1;
         this.vc = Math.random() * 0.4 - 0.2;
         this.va = Math.random() * 0.5 - 0.25;
     }
@@ -49,6 +49,9 @@ export default class LineFive {
         this.angle += this.va;
         this.curve += this.vc;
         if (this.timer < this.lifeSpan) {
+            if(this.timer < this.lifeSpan) {
+                this.va * 1.2
+            }
             this.x += Math.sin(this.angle) * this.curve;
             this.y += Math.cos(this.angle) * this.curve;
             this.history.push({x: this.x, y: this.y});
@@ -67,5 +70,7 @@ export default class LineFive {
         this.history = [{x: this.x, y: this.y}];
         this.timer = 0;
         this.curve = 0;
+        this.angle = 0;
+        this.va = Math.random() * 0.5 - 0.25;
     }
 }
