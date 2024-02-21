@@ -14,11 +14,12 @@ export default class LineFive {
     curve: number;
     vc: number;
     va: number;
+    breakPoint: number;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
         this.x = Math.random() * this.canvas.width;
-        this.y = Math.random() * this.canvas.height;
+        this.y = Math.random() * this.canvas.height * 0.2;
         this.history = [{x: this.x, y: this.y}];
         this.lineWidth = Math.floor(Math.random() * 12 + 1);
         this.hue = Math.floor(Math.random() * 360);
@@ -26,6 +27,7 @@ export default class LineFive {
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = 7;
         this.lifeSpan = this.maxLength * 3;
+        this.breakPoint = this.lifeSpan * 0.85;
         this.timer = 0;
         this.angle = 0;
         this.curve = 10;
