@@ -46,9 +46,10 @@ export default class LineTwo {
     }
     update() {
         this.timer++;
+        this.angle++;
         if (this.timer < this.lifeSpan) {
             this.x += this.speedX + Math.random() * 20 - 10;
-            this.y += this.speedY+ Math.random() * 15 - 8;
+            this.y += this.speedY + Math.random() * this.angle;
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) {
                 this.history.shift();
@@ -64,5 +65,6 @@ export default class LineTwo {
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
         this.timer = 0;
+        this.angle = 0;
     }
 }
