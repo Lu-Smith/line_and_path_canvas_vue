@@ -25,8 +25,10 @@
             numberOfLine.value = 80;
         } else if (newValue === 2) {
             numberOfLine.value = 100;
-        } else {
+        } else if (newValue === 3) {
             numberOfLine.value = 240;
+        } else {
+            numberOfLine.value = 80;
         }
 
         if (canvas.value) {
@@ -37,7 +39,6 @@
  
             for (let i = 0; i < numberOfLine.value; i++) {
                 if (newValue === 1) {
-                    
                     //canvas shadows
                     ctx.shadowOffsetX = 2;
                     ctx.shadowOffsetY = 2;
@@ -61,8 +62,7 @@
                     ctx.strokeStyle = gradient1;
                    
                     linesArray.value.push(new LineTwo(canvas.value));
-                    
-                } else {
+                } else if (newValue === 3) {
                     const gradient2 = ctx.createRadialGradient(canvas.value.width * 0.5, canvas.value.height * 0.5, 
                     10, canvas.value.width * 0.5, canvas.value.height * 0.5, 350);
                     gradient2.addColorStop(0.22, 'blue');
@@ -75,6 +75,14 @@
                     gradient2.addColorStop(0.99, 'blue');
                     ctx.strokeStyle = gradient2;
                     linesArray.value.push(new LineThree(canvas.value));
+                    
+                } else {
+                    //canvas shadows
+                    ctx.shadowOffsetX = 2;
+                    ctx.shadowOffsetY = 2;
+                    ctx.shadowColor = 'black';
+                   
+                    linesArray.value.push(new LineOne(canvas.value));
                 }
             }
             animate(ctx);
