@@ -25,6 +25,7 @@ a {
 }
 
 a:hover {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid white;
+  color: white;
 }
 
