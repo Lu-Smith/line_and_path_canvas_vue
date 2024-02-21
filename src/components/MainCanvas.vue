@@ -8,6 +8,7 @@
     import LineOne from '../assets/LineOne';
     import LineTwo from '../assets/LineTwo';
     import LineThree from '../assets/LineThree';
+    import LineFour from '../assets/LineFour';
     import LineIntro from '../assets/LineIntro';
     import ElephantImage from './ElephantImage.vue';
 
@@ -82,7 +83,7 @@
                     ctx.shadowOffsetY = 2;
                     ctx.shadowColor = 'black';
                    
-                    linesArray.value.push(new LineOne(canvas.value));
+                    linesArray.value.push(new LineFour(canvas.value));
                 }
             }
             animate(ctx);
