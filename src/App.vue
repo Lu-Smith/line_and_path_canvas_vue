@@ -114,4 +114,15 @@ const changeCanvas = (buttonNumber: number) => {
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 786px) {
+  .buttonsContainer{
+    margin-top: 16px;
+    flex-direction: column;
+  }
+
+  .footerContainer{
+    font-size: 0.9rem;
+  }
+}
 </style>
