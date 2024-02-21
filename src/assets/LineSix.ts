@@ -21,17 +21,17 @@ export default class LineSix {
         this.x = Math.random() * this.canvas.width;
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
-        this.lineWidth = Math.floor(Math.random() * 22 + 1);
+        this.lineWidth = Math.floor(Math.random() * 32 + 1);
         this.hue = Math.floor(Math.random() * 360);
-        this.maxLength = Math.floor(Math.random() * 120 + 10);
+        this.maxLength = Math.floor(Math.random() * 80 + 10);
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = 5;
         this.lifeSpan = this.maxLength * 3;
         this.breakPoint = this.lifeSpan * 0.85;
         this.timer = 0;
         this.angle = 0;
-        this.curve = 5;
-        this.vc = Math.random() * 0.8 - 0.2;
+        this.curve = 0.1;
+        this.vc = Math.random() * 1.4 - 0.2;
         this.va = Math.random() * 0.5 - 0.25;
     }
     draw(ctx: CanvasRenderingContext2D ) {
@@ -52,7 +52,7 @@ export default class LineSix {
             if (this.timer >  this.breakPoint) {
                 this.va *= -1.12;
             }
-            this.x += Math.sin(this.angle) * this.curve;
+            this.x += Math.cos(this.angle) * this.curve;
             this.y += Math.cos(this.angle) * this.curve;
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) {
