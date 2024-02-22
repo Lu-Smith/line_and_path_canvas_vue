@@ -21,11 +21,11 @@ export default class LineIntro {
         this.x = Math.random() * this.canvas.width;
         this.y = Math.random() * this.canvas.height;
         this.history = [{x: this.x, y: this.y}];
-        this.lineWidth = Math.floor(Math.random() * 15 + 1);
+        this.lineWidth = Math.floor(Math.random() * 20 + 1);
         this.hue = Math.floor(Math.random() * 360);
         this.maxLength = Math.floor(Math.random() * 150 + 10);
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = 7;
+        this.speedX = Math.random() * 2 - 0.5;
+        this.speedY = 8;
         this.lifeSpan = this.maxLength * 3;
         this.breakPoint = this.lifeSpan * 0.85;
         this.timer = 0;
