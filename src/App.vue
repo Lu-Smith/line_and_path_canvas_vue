@@ -9,11 +9,11 @@
     <div class="buttonsContainer">
       <h3>Choose your art:</h3>
       <div class="buttons">
-        <button @click="changeCanvas(1)" 
+        <button @click="changeCanvas(5)" 
         :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
           1
         </button>
-        <button @click="changeCanvas(5)"
+        <button @click="changeCanvas(1)"
         :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
           2
         </button>
