@@ -28,7 +28,7 @@
         // const imagePattern = document.getElementById("elephant") as CanvasImageSource;
         linesArray.value = [];
         if (newValue === 1) {
-            numberOfLine.value = 200;
+            numberOfLine.value = 140;
         } else if (newValue === 2) {
             numberOfLine.value = 100;
         } else if (newValue === 3) {
@@ -49,24 +49,12 @@
             const imagePattern = document.getElementById("elephant") as CanvasImageSource;
 
             if(imagePattern && newValue === 1) {
-                        ctx.translate(canvas.value.width/2-300, 45);
+                        ctx.translate(canvas.value.width/2-300, 35);
                         const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
                         ctx.strokeStyle = pattern1 ?? 'black'; 
                     }
- 
             for (let i = 0; i < numberOfLine.value; i++) {
-                if (newValue === 1) {
-                    // const gradient4 = ctx.createLinearGradient(0, 0, canvas.value.width, canvas.value.height)
-                    // gradient4.addColorStop(0.2, 'pink');
-                    // gradient4.addColorStop(0.5, 'red');
-                    // gradient4.addColorStop(0.8, 'orange');
-                    // //canvas shadows
-                    // ctx.shadowOffsetX = 4;
-                    // ctx.shadowOffsetY = 3;
-                    // ctx.shadowColor = '#f5c7f7';
-                    // ctx.strokeStyle = gradient4;
-                    // linesArray.value.push(new LineOne(canvas.value));
-                    
+                if (newValue === 1) {                    
                     //canvas shadows
                     ctx.shadowOffsetX = 2;
                     ctx.shadowOffsetY = 2;
