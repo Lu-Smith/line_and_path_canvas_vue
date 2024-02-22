@@ -49,8 +49,7 @@
             const imagePattern = document.getElementById("elephant") as CanvasImageSource;
 
             if(imagePattern && newValue === 1) {
-                        ctx.translate(canvas.value.width/2-300, 35);
-                        const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
+                        const pattern1 = ctx.createPattern(imagePattern, 'repeat');
                         ctx.strokeStyle = pattern1 ?? 'black'; 
                     }
             for (let i = 0; i < numberOfLine.value; i++) {
@@ -58,7 +57,7 @@
                     //canvas shadows
                     ctx.shadowOffsetX = 2;
                     ctx.shadowOffsetY = 2;
-                    ctx.shadowColor = 'black';
+                    ctx.shadowColor = 'white';
                     linesArray.value.push(new LineIntro(canvas.value))
                 } else if (newValue === 2) {
                     //canvas shadows
@@ -149,13 +148,12 @@
                 ctx.shadowColor = 'black';
         
                 if(imagePattern) {
-                    ctx.translate(canvas.value.width/2-300, 45);
-                    const pattern1 = ctx.createPattern(imagePattern, 'no-repeat');
+                    const pattern1 = ctx.createPattern(imagePattern, 'repeat');
                     ctx.strokeStyle = pattern1 ?? 'black'; 
                 }
             
                 for (let i = 0; i < numberOfLine.value; i++) {
-                        linesArray.value.push(new LineIntro(canvas.value))
+                        linesArray.value.push(new LineFive(canvas.value))
                 }
                 animate(ctx);
             }
