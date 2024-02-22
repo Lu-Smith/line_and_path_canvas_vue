@@ -13,7 +13,7 @@
         :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
           1
         </button>
-        <button @click="changeCanvas(1)"
+        <button @click="changeCanvas(6)"
         :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
           2
         </button>
@@ -29,7 +29,7 @@
         :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
           5
         </button>
-        <button @click="changeCanvas(6)"
+        <button @click="changeCanvas(1)"
         :style="{ backgroundColor: mode ? '#dde0ab' : '#1d1716', color: mode ? '#668ba4' : '#f3bc77', border: mode ? '2px solid #668ba4' : '2px solid #f3bc77' }">
           6
         </button>
